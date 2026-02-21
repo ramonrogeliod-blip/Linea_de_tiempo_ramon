@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(100deg, lime, rgb(0, 0, 0));
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+        .subnum{
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+        .num{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;        
+        }
+        .num a{
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: auto;
+            position: relative;
+            z-index: 5;
+        }
+        .imgs{
+            width: 350px;
+            height: 350px;
+            border-radius: 10px;
+            transform: scale(1);
+            transition: transform .5s ease-in-out; 
+        }
+        .imgs:hover{
+            transform: translateY(-10px);
+            transition: transform 0.5s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .tit{
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-size: 40px;
+        }
+        .nom, .nomi{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(0, 0, 0);
+            font-size: 50px;
+            font-weight: bold;
+            opacity: 0; /* Oculto por defecto */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            z-index: 2;
+
+            transition: all 0.6s ease-in-out;
+        }
+        .num a:hover + .nom{
+            opacity: 1;
+            filter: brightness(40%); 
+            transform: translateX(105px) translateY(-350px);
+            transition: transform 0.5s;
+        }
+        .num a:hover + .nomi{
+            opacity: 1;
+            filter: brightness(40%); 
+            transform: translateX(-245px) translateY(-350px);
+            transition: transform 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+    <h2 class="tit" >¿Que Linea de Tiempo quieres ver?</h2>
+    <div class="subnum">
+        <nav class="num">
+            <a href="and.html"><img class="imgs" src="img/android_menu.png" alt="mono-android"></a>
+            <p class="nom">Android</p>
+        </nav>
+        <nav class="num">
+            <a href="ios.html"><img class="imgs" src="img/iOS_menu.png" alt="mono-ios"></a>
+            <p class="nomi" style="color: black;">iOS</p>
+        </nav>
+    </div>
+</body>
+</html>

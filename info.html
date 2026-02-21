@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles</title>
+    <style>
+        /* Pega aquí todo el CSS de los temas que te di en la respuesta anterior */
+        body { margin: 0; padding: 0; min-height: 100vh; transition: background 0.5s ease; }
+.content-wrapper { max-width: 1100px; margin: 0 auto; padding: 20px 20px; }
+.back-btn { position: fixed; top: 20px; left: 20px; padding: 10px 20px; text-decoration: none; border-radius: 5px; z-index: 100; font-weight: bold; }
+img { max-width: 100%; height: auto; display: block; }
+article { margin-bottom: 100px; padding-top: 60px; } /* Espacio para que el ancla # funcione bien */
+.loading { opacity: 0; } /* Oculto mientras carga el diseño */
+
+/* =========================================
+   DISEÑO 1: CLEAN APPLE (Minimalista)
+   ========================================= */
+.theme-clean {
+    background-color: #f5f5f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1d1d1f;
+}
+.theme-clean .info-card {
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.theme-clean h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 20px; }
+.theme-clean .back-btn { background: #0071e3; color: white; border-radius: 20px; }
+.theme-clean .badge { background: #eee; padding: 5px 10px; border-radius: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.theme-clean img { border-radius: 12px; margin: 20px 0; }
+
+.theme-clean table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.95rem;
+}
+
+/* Estilo para los títulos de las columnas */
+.theme-clean th {
+    text-align: left;
+    padding: 12px 15px;
+    color: #86868b; /* Gris suave estilo Apple */
+    font-weight: 600;
+    border-bottom: 1px solid #d2d2d7; /* Línea divisoria sutil */
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para las celdas de información */
+.theme-clean td {
+    padding: 16px 15px;
+    border-bottom: 1px solid #e5e5ea; /* Línea aún más suave entre filas */
+    color: #1d1d1f;
+}
+
+/* Quitamos la línea inferior a la última fila para que se vea más limpio */
+.theme-clean tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efecto suave al pasar el ratón por encima de una fila */
+.theme-clean tbody tr:hover td {
+    background-color: #fcfcfc;
+}
+
+/* =========================================
+   DISEÑO 2: CYBERPUNK (Técnico / Hacker)
+   ========================================= */
+.theme-cyber {
+    justify-content: center;
+    background-color: #050505;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff41;
+    background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.theme-cyber .info-card {
+    border: 2px solid #00ff41;
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+.theme-cyber h1 { text-transform: uppercase; border-bottom: 1px dashed #00ff41; padding-bottom: 10px; text-shadow: 0 0 5px #00ff41; }
+.theme-cyber .back-btn { background: black; color: #00ff41; border: 1px solid #00ff41; }
+.theme-cyber .badge { background: #00ff41; color: black; padding: 2px 8px; font-weight: bold; }
+.theme-cyber img { border: 1px solid #00ff41; }
+.theme-cyber ul { list-style-type: disc;}
+
+
+/* =========================================
+   ESTILOS DE TABLA PARA THEME-CYBER
+   ========================================= */
+.theme-cyber table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(0, 255, 65, 0.05); /* Un fondo verde casi invisible */
+    border: 1px solid #00ff41;
+}
+
+.theme-cyber th {
+    background-color: rgba(0, 255, 65, 0.2); /* Resalta el encabezado */
+    color: #00ff41;
+    text-transform: uppercase;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #00ff41;
+    text-shadow: 0 0 5px #00ff41; /* Efecto neón */
+}
+
+.theme-cyber td {
+    padding: 12px;
+    border-bottom: 1px dashed rgba(0, 255, 65, 0.3);
+    color: #00ff41;
+}
+
+/* Efecto de fila seleccionada al pasar el mouse */
+.theme-cyber tbody tr:hover {
+    background-color: rgba(0, 255, 65, 0.15);
+    cursor: pointer; /* Cambia el cursor por una mira */
+}
+
+/* Agrega un prefijo ">" antes de cada dato para que parezca consola */
+.theme-cyber td::before {
+    content: "> ";
+    opacity: 0.5;
+}
+
+/* =========================================
+   DISEÑO 4: NEON NIGHT (Oscuro Moderno)
+   ========================================= */
+.theme-neon {
+    background: linear-gradient(135deg, #120c24 0%, #2a1b4e 100%);
+    font-family: 'Verdana', sans-serif;
+    color: white;
+}
+.theme-neon .info-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.theme-neon h1 { 
+    background: -webkit-linear-gradient(#f09, #0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+.theme-neon .back-btn { background: linear-gradient(90deg, #f09, #0ff); color: white; border: none; }
+.theme-neon img { border-radius: 20px; box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); }
+
+
+/* --- ESTILOS IMPORTANTES PARA OCULTAR/MOSTRAR --- */
+
+/* 1. Por defecto, todas las tarjetas están ocultas */
+.info-card {
+    display: none; 
+    /* Mantén tus otros estilos de borde, padding, etc aquí */
+}
+
+/* 2. Clase para mostrar SOLO la activa */
+.info-card.active {
+    display: block;
+    animation: fadeIn 0.8s ease; /* Efecto suave al aparecer */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ESTILOS DEL BOTÓN VOLVER --- */
+.back-btn {
+    cursor: pointer; /* Para que parezca clicable */
+    /* Tus otros estilos de botón... */
+}
+    </style>
+</head>
+<body>
+
+    <button onclick="history.back()" class="back-btn">Volver</button>
+
+    <div class="content-wrapper">
+    
+        <!-- aqui inicia ios -->
+
+        <article id="ios15" class="info-card">
+            <header>
+                <span class="badge">iOS</span>
+                <h1>iOS 15: Conectividad y Contexto en el Mundo Post-Pandémico</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/ios_info/ios15_info.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    iOS 15 enfocó sus esfuerzos en mejorar las capacidades de comunicación remota y proporcionar herramientas para gestionar la atención digital.   
+                    <br><br><strong>Mejoras en FaceTime y SharePlay</strong> <br>
+                    FaceTime recibió actualizaciones estructurales como el audio espacial y el aislamiento de voz para eliminar ruidos ambientales. SharePlay se convirtió en la API 
+                    insignia, permitiendo la sincronización de películas, música y aplicaciones entre múltiples usuarios durante una llamada. Además, se introdujeron los Modos de 
+                    Concentración (Focus), permitiendo filtrar notificaciones basadas en si el usuario está trabajando, durmiendo o en su tiempo personal.
+                </p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Versión</th>
+                        <th>Categoría de Mejora</th>
+                        <th>Detalle del Error Corregido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15.0.1</td>
+                        <td>Almacenamiento</td>
+                        <td>Solución a alertas falsas de "Almacenamiento lleno" a pesar de tener espacio disponible.</td>
+                    </tr>
+                    <tr>
+                        <td>15.4.1</td>
+                        <td>Batería</td>
+                        <td>Resolución de un problema de drenaje de batería inusualmente rápido tras la actualización.</td>
+                    </tr>
+                    <tr>
+                        <td>15.6</td>
+                        <td>Navegación</td>
+                        <td>Arreglo de un error en Safari donde las pestañas volvían a páginas anteriores de forma inesperada.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+
+        
+        <article id="ios16" class="info-card">
+            <header>
+                <span class="badge">OS</span>
+                <h1>iOS 16: La Personalización Profunda y el Refuerzo de la Seguridad</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/ios_info/ios16_info.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzado en 2022, iOS 16 rompió con la rigidez tradicional al permitir una personalización total de la pantalla de bloqueo.
+                    <br><br>
+                    <strong>La Revolución de la Pantalla de Bloqueo y Privacidad</strong><br>
+                    Los usuarios pudieron cambiar la tipografía del reloj y añadir widgets informativos. Se introdujeron las Actividades en Vivo (Live Activities) para mostrar información
+                     en tiempo real, como el marcador de un partido. En seguridad, se lanzó el Modo de Aislamiento (Lockdown Mode), diseñado para proteger a usuarios específicos de ataques 
+                     cibernéticos sofisticados
+                </p>
+            </div>
+        </article>
+        
+
+
+        <article id="ios17" class="info-card">
+            <header>
+                <span class="badge">iOS</span>
+                <h1>iOS 17: Comunicación Personalizada y Experiencias "En Espera"</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/ios_info/ios17_info.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzado en 2023, iOS 17 se centró en hacer que el iPhone fuera más personal e intuitivo, mejorando las herramientas de comunicación y 
+                    aprovechando los momentos en los que el dispositivo no está en uso activo.   
+                    <br><br>
+                    <strong>Innovaciones en la Experiencia del Usuario</strong><br>
+                    Una de las funciones más visuales fue Contact Posters, que permite a los usuarios personalizar cómo aparecen en la pantalla de otros cuando realizan una llamada, 
+                    integrando fotos, tipografía y colores específicos. Asimismo, se introdujo NameDrop, una evolución de AirDrop que permite intercambiar información de contacto 
+                    simplemente acercando un iPhone a otro.   
+                    <br><br>
+                    Para optimizar el uso del dispositivo mientras carga, Apple lanzó StandBy (En espera). Esta función convierte la pantalla del iPhone en un centro de información a 
+                    pantalla completa con widgets, relojes y fotos, diseñado para ser visto a distancia cuando el teléfono está colocado de lado. En el ámbito de los mensajes, 
+                    se añadieron los Live Stickers, permitiendo crear calcomanías a partir de sujetos extraídos de fotos personales.
+                    <br><br>
+                    <strong>Fundamentos Técnicos y Estabilidad de iOS 17</strong><br>
+                    El SDK de iOS 17 (vinculado a Xcode 15) introdujo mejoras significativas en el procesamiento del lenguaje para Siri y el autocorrector, 
+                    utilizando modelos de transformadores en el dispositivo para una mayor precisión.   
+                </p>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Enfoque de Actualizacion</th>
+                    <th>arreglo de errores y mejoras</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>17.0.3</th>
+                    <th>Rendimiento</th>
+                    <th>Solución crítica a un problema de sobrecalentamiento inusual en los modelos iPhone 15 Pro.</th>
+                </tr>
+                <tr>
+                    <th>17.1</th>
+                    <th>Conectividad</th>
+                    <th>Arreglo de un fallo donde Apple Pay y NFC dejaban de funcionar tras la carga inalámbrica en ciertos vehículos.</th>
+                </tr>
+                <tr>
+                    <th>17.5.1</th>
+                    <th>Almacenamiento</th>
+                    <th>Resolución de un error raro donde fotos borradas hace años reaparecían debido a una corrupción en la base de datos de la fototeca.</th>
+                </tr>
+                <tr>
+                    <th>17.7</th>
+                    <th>Seguridad</th>
+                    <th>Actualización final de soporte con 16 parches de seguridad importantes para dispositivos que no actualizaron a iOS 18.</th>
+                </tr>
+                </thead>
+            </table>
+        </article>
+
+        <article id="ios18" class="info-card">
+            <header>
+                <span class="badge">iOS</span>
+                <h1>iOS 18: La Integración Sistémica de la Inteligencia Artificial</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/ios_info/ios18_info.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    iOS 18 introdujo Apple Intelligence, una arquitectura de IA personal integrada profundamente en el sistema que prioriza la privacidad procesando datos en el dispositivo.   
+                    <br><br><strong>Apple Intelligence y Siri 2.0</strong><br>
+                    Siri recibió un rediseño visual con un resplandor luminoso en los bordes de la pantalla. Las Writing Tools ahora permiten resumir y corregir textos en cualquier app. Además, 
+                    se liberó la cuadrícula de la pantalla de inicio, permitiendo colocar iconos en cualquier posición y teñirlos con colores personalizados.   
+                    <br><br><strong>Estabilidad y Arreglos Críticos en iOS 18</strong>
+                </p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Problema Resuelto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18.3</td>
+                        <td>Corrección del teclado que desaparecía durante peticiones a Siri.</td>
+                    </tr>
+                    <tr>
+                        <td>18.4.1</td>
+                        <td>Solución a un error raro que impedía conexiones inalámbricas con CarPlay.</td>
+                    </tr>
+                    <tr>
+                        <td>18.5</td>
+                        <td>Arreglo de pantalla negra al usar la app de Apple Vision Pro.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+
+        <article id="ios26" class="info-card">
+            <header>
+                <span class="badge">iOS</span>
+                <h1>iOS 26: La Era del Vidrio Líquido y la Interfaz Autónoma</h1>
+            </header>
+            <div class="image-container">
+                <img  src="img/ios_info/ios26_info.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    iOS 26 introdujo el lenguaje de diseño Liquid Glass, que utiliza refracciones y reflexiones ópticas para crear una interfaz que se siente física y viva.
+                    <br><br><strong>El Diseño Liquid Glass y Funciones Autónomas</strong><br>
+                    Los menús ahora pueden "morfosearse" dinámicamente y las barras de navegación se contraen para priorizar el contenido. Se añadieron funciones inteligentes como Call Screening, 
+                    donde el iPhone responde llamadas desconocidas y muestra una transcripción en vivo, y Adaptive Power Mode, que ajusta la energía basándose en el comportamiento del usuario.
+                    <br><br><strong>Nivel de API e Innovaciones SDK 2</strong><br>
+                    DeclaredAgeRange API: Permite a las apps solicitar rangos de edad (13+, 18+) de forma privada sin ver la fecha de nacimiento real.   
+                    <br>LanguageModelSession: API para que desarrolladores precarguen modelos de IA y reduzcan la latencia de respuesta.   
+                </p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Version</th>
+                        <th>Innovación o Arreglo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>26.1</td>
+                        <td>Introducción de un control para ajustar la opacidad del vidrio líquido.</td>
+                    </tr>
+                    <tr>
+                        <td>26.3</td>
+                        <td>Resolución de desconexiones de Wi-Fi y Bluetooth en la serie iPhone 17.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+
+        <!-- Aqui inicia android -->
+
+        <article id="Eclair" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 2.0 y 2.1 Eclair: El Nacimiento de la Sincronización Moderna (API 5, 6, 7)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_eclair.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    La llegada de Android 2.0, denominada internamente "Eclair", marcó el primer gran salto hacia la madurez del sistema operativo. Lanzada en octubre de 2009 y basada en el kernel 
+                    de Linux 2.6.29, esta versión introdujo la capacidad de gestionar múltiples cuentas de usuario, permitiendo que un solo dispositivo sincronizara contactos y correos electrónicos 
+                    de diversas fuentes, incluyendo el soporte nativo para Microsoft Exchange. Este avance fue fundamental para que Android fuera considerado una herramienta viable en entornos corporativos.   
+                    <br><br>
+                    En términos de innovación en la interfaz de usuario, Eclair presentó la función "Quick Contact", una barra de herramientas que aparecía al tocar la foto de un contacto, permitiendo 
+                    iniciar llamadas, enviar SMS o correos electrónicos de manera instantánea sin cambiar de aplicación. El teclado virtual fue refinado significativamente para mejorar la velocidad de 
+                    escritura mediante la implementación de datos multitáctiles y un diccionario adaptativo que aprendía de los hábitos del usuario y sus contactos. La cámara también recibió mejoras 
+                    críticas, incorporando por primera vez soporte para flash, zoom digital, modos de escena, balance de blancos y efectos de color, transformando el dispositivo móvil en una herramienta multimedia competitiva.   
+                    <br><br>
+                    Técnicamente, Eclair permitió mejoras en el desarrollo nativo. Antes de esta versión, el carácter '$' no se convertía correctamente durante las búsquedas de nombres 
+                    de métodos en JNI, un error que fue subsanado a partir del API Level 5. Además, se introdujo el soporte para Bluetooth 2.1 y la capacidad de utilizar fondos de pantalla 
+                    animados (Live Wallpapers), lo que demostraba la creciente potencia gráfica de la plataforma.   
+                </p>
+            </div>
+        </article>
+
+    <article id="Froyo" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 2.2 Froyo: La Revolución del Rendimiento y el JIT (API 8)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_froyo.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzada en mayo de 2010, la versión 2.2, conocida como "Froyo" (Frozen Yogurt), se centró casi exclusivamente en optimizar el rendimiento y la velocidad de ejecución. La innovación 
+                    técnica más trascendental de esta versión fue la introducción del compilador Just-In-Time (JIT) en la máquina virtual Dalvik. Este mecanismo permitía que las aplicaciones se ejecutaran 
+                    entre 2 y 5 veces más rápido en tareas intensivas de CPU en comparación con Eclair, según las pruebas de rendimiento de la época.
+                    <br><br>
+                    Froyo también democratizó la conectividad al introducir la funcionalidad de Wi-Fi Hotspot y tethering por USB, permitiendo a los usuarios compartir su conexión de datos móviles con 
+                    otros dispositivos. El navegador web recibió un impulso significativo con la integración del motor de JavaScript V8 de Chrome, lo que resultó en una carga de páginas web entre 2 y 3 
+                    veces más veloz. Además, se introdujo el servicio Android Cloud to Device Messaging (C2DM), el precursor de las notificaciones push modernas, que permitía a los servicios en la nube 
+                    enviar alertas y datos directamente al dispositivo.   
+                    <br><br>
+                    En cuanto a la corrección de errores, Froyo solucionó problemas críticos en el enrutamiento de SMS que habían afectado a dispositivos anteriores como el Nexus One. Para los desarrolladores, 
+                    el API Level 8 trajo la posibilidad de instalar aplicaciones en el almacenamiento externo (tarjeta SD) y nuevas APIs de respaldo de datos, facilitando la restauración de configuraciones cuando 
+                    el usuario cambiaba de dispositivo.   
+                </p>
+            </div>
+        </article>
+
+        <article id="Gingerbread" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 2.3 Gingerbread: Consolidación para el Gaming y Sensores (API 9, 10)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_Gingerbread.webp" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                 Android 2.3 "Gingerbread", lanzado a finales de 2010, fue la versión que consolidó a la plataforma como una potencia para los juegos y el contenido multimedia de alta fidelidad. El API Level 9 
+                 introdujo un recolector de basura concurrente para la máquina virtual Dalvik, lo que minimizó las pausas en las aplicaciones y proporcionó una experiencia de juego mucho más fluida al eliminar 
+                 los micro-tirones en las animaciones.   
+                <br><br>
+                Gingerbread amplió el soporte de hardware de manera exponencial. Se incluyeron APIs para el giroscopio, barómetro, sensores de rotación vectorial y aceleración lineal, permitiendo un seguimiento 
+                del movimiento en tres dimensiones con una precisión sin precedentes. También se integró el soporte nativo para Near Field Communication (NFC), estableciendo las bases para los pagos móviles y la 
+                transferencia de datos por proximidad. Para los desarrolladores de audio, la implementación de Khronos OpenSL ES permitió un control de baja latencia sobre los efectos de sonido, algo esencial para 
+                la competitividad en el mercado de los videojuegos.
+                <br><br>
+                Un cambio estructural importante en el API Level 9 fue la exposición de librerías nativas para el manejo de gráficos y eventos de entrada directamente en C/C++, lo que permitió a los desarrolladores 
+                de alto rendimiento evitar el "overhead" de la capa de Java para tareas críticas. Además, se introdujo un gestor de descargas centralizado que facilitaba a las aplicaciones la administración de 
+                archivos grandes en segundo plano.   
+                </p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sensor / API</th>
+                        <th>Función en Gingerbread</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Giroscopio</td>
+                        <td>Reconocimiento de gestos como inclinación y rotación </td>
+                    </tr>
+                    <tr>
+                        <td>Barómetro</td>
+                        <td>Medición de presión atmosférica para aplicaciones de clima y navegación</td>
+                    </tr>
+                    <tr>
+                        <td>NFC</td>
+                        <td>Intercambio de datos inalámbricos a corta distancia </td>
+                    </tr>
+                    <tr>
+                        <td>OpenSL ES</td>
+                        <td>Procesamiento de audio nativo de alto rendimiento </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+
+        <article id="Honeycomb" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 3.x Honeycomb: El Experimento de las Pantallas Grandes (API 11, 12, 13)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_honeycomb.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Con la popularización de las tabletas, Google lanzó en 2011 la serie Android 3.0 "Honeycomb", una versión diseñada exclusivamente para dispositivos de pantalla grande. Honeycomb introdujo una 
+                    interfaz de usuario completamente nueva denominada "Holographic", que eliminaba la necesidad de botones físicos de navegación, reemplazándolos por una barra de sistema en pantalla y una barra 
+                    de acciones (Action Bar) en la parte superior de las aplicaciones.   
+                    <br><br>
+                    Técnicamente, el API Level 11 fue revolucionario debido a la introducción de los "Fragments". Estos componentes permitían a los desarrolladores crear interfaces modulares que podían adaptarse 
+                    dinámicamente: una aplicación podía mostrar un panel en un teléfono y dos paneles laterales en una tableta. Honeycomb también trajo el soporte para procesadores multinúcleo y aceleración por 
+                    hardware para gráficos 2D, mejorando la fluidez de las interfaces complejas.
+                    <br><br>
+                    La versión 3.1 (API 12) amplió esta versatilidad permitiendo que el dispositivo actuara como USB Host, lo que habilitó la conexión directa de teclados, ratones e incluso controladores de juegos 
+                    como los de Xbox 360 o PlayStation 3 mediante cables USB. También se introdujeron los widgets redimensionables, permitiendo a los usuarios personalizar su pantalla de inicio con mayor libertad. 
+                    Honeycomb resolvió errores de conectividad Wi-Fi mediante la implementación de un bloqueo de Wi-Fi de alto rendimiento, permitiendo que las aplicaciones mantuvieran una conexión activa incluso 
+                    con la pantalla apagada para servicios de streaming ininterrumpidos.   
+                </p>
+            </div>
+        </article>
+
+        <article id="Ice_Cream_Sandwich" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 4.0 Ice Cream Sandwich: La Unificación del Ecosistema (API 14, 15)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_Ice_Cream_Sandwich.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzada en octubre de 2011, Android 4.0 "Ice Cream Sandwich" (ICS) tuvo la misión crítica de unificar las líneas de desarrollo de teléfonos y tabletas que se habían separado con Honeycomb. 
+                    ICS trajo la estética y las funciones de Honeycomb a los smartphones, introduciendo una interfaz refinada con la nueva tipografía "Roboto", optimizada para pantallas de alta resolución.   
+                    <br><br>
+                    Entre las innovaciones de usuario más destacadas se encontraban "Face Unlock", el primer sistema de reconocimiento facial masivo en móviles, y "Android Beam", que utilizaba NFC para compartir 
+                    contenido simplemente tocando dos dispositivos. También se introdujeron herramientas integradas para el control del uso de datos móviles, permitiendo a los usuarios establecer límites y alertas 
+                    para evitar cargos inesperados.   
+                    <br><br>
+                    Desde el punto de vista técnico, el API Level 14 introdujo cambios profundos en la Interfaz Nativa de Java (JNI). Las referencias locales, que anteriormente eran punteros directos, se convirtieron 
+                    en punteros indirectos para permitir el uso de recolectores de basura más avanzados. Aunque esto mejoró la estabilidad a largo plazo, reveló muchos errores en aplicaciones existentes que no 
+                    gestionaban correctamente las referencias nativas. ICS también implementó el Address Space Layout Randomization (ASLR) para mejorar la seguridad del sistema contra ataques de ejecución de código malicioso.   
+                </p>
+            </div>
+        </article>
+
+
+        <article id="Jelly_Bean" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 4.1 a 4.3 Jelly Bean: El Proyecto Butter y la Fluidez (API 16, 17, 18)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_jelly_bean.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Jelly Bean se centró en eliminar el "lag" que históricamente había afectado a Android. Mediante el "Project Butter", Google implementó el Vsync timing para todas las operaciones de dibujo y 
+                    renderizado, junto con el triple buffering en el pipeline de gráficos, asegurando una tasa de refresco constante de 60 fotogramas por segundo.   
+                    <br><br>
+                    El API Level 17 (Android 4.2) introdujo el soporte para múltiples usuarios en tabletas, permitiendo que cada miembro de la familia tuviera su propio espacio personal con aplicaciones y configuraciones 
+                    independientes. También se añadió el soporte para pantallas externas inalámbricas mediante Miracast. La actualización final de esta serie, el API Level 18 (Android 4.3), introdujo el soporte para OpenGL 
+                    ES 3.0, lo que permitió efectos visuales más realistas, como reflejos y sombreados complejos, gracias a la aceleración por hardware avanzada.   
+                    <br><br>
+                    En términos de correcciones, Jelly Bean mejoró significativamente la latencia de entrada táctil y optimizó la asignación de buffers de ventana, lo que redujo el tiempo de inicio de las aplicaciones desde 
+                    que el usuario tocaba el icono hasta que se renderizaba el primer fotograma.
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="KitKat" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 4.4 KitKat: Optimizando para el Siguiente Millón (API 19, 20)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_kitkat.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 4.4 "KitKat" fue un hito en la eficiencia. Bajo el "Project Svelte", Google optimizó el sistema operativo para que pudiera ejecutarse de manera fluida en dispositivos con solo 512 MB de RAM, 
+                    lo que permitió que Android dominara el mercado de dispositivos económicos a nivel mundial. <br><br>
+                    <strong>Innovaciones clave de KitKat:</strong><br>
+                </p>
+                <ul>
+                    <li><strong>Modo Inmersivo:</strong>Permitía a las aplicaciones ocultar todas las barras del sistema (estado y navegación) para utilizar cada píxel de la pantalla, ideal para lectura y juegos.</li><br>
+                    <li><strong>Host Card Emulation (HCE):</strong>Permitió que las aplicaciones emularan tarjetas de pago y tránsito sin depender de un chip de seguridad físico proporcionado por las operadoras telefónicas.</li><br>
+                    <li><strong>Framework de Impresión:</strong>Introdujo una interfaz unificada para imprimir documentos desde cualquier aplicación hacia impresoras locales o en la nube.</li><br>
+                    <li><strong>Sensores de Pasos:</strong>Soporte nativo por hardware para detectores y contadores de pasos, consumiendo una fracción de la batería que requerían las soluciones basadas en software.</li><br>
+                </ul>
+                <p>
+                    El API Level 20 fue una ramificación específica para "Android Wear", marcando el inicio formal de la plataforma para relojes inteligentes. Esta versión adaptó el framework de notificaciones para que la información fuera 
+                    digerible en pantallas pequeñas y circulares.   
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Lollipop" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 5.0 y 5.1 Lollipop: Material Design y el Salto a 64 bits (API 21, 22)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_lillipop.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 5.0 "Lollipop" representó el rediseño más ambicioso en la historia de la plataforma. Introdujo "Material Design", un lenguaje visual basado en sombras en tiempo real, animaciones fluidas y una jerarquía de 
+                    capas clara inspirada en el papel y la tinta. Pero el cambio más profundo fue estructural: el reemplazo definitivo de Dalvik por ART (Android Runtime).  
+                    <br><br>
+                    A diferencia de su predecesor, ART utiliza la compilación "Ahead-of-Time" (AOT). Al instalar una aplicación, esta se pre-compila en código de máquina, lo que resulta en un inicio de apps más veloz y una reducción 
+                    del uso de CPU durante la ejecución, mejorando la autonomía de la batería. Lollipop también fue la primera versión con soporte nativo para arquitecturas de 64 bits, permitiendo a los dispositivos móviles aprovechar 
+                    procesadores de alto rendimiento con grandes cantidades de RAM.   
+                    <br><br>
+                    En el ámbito de la seguridad y empresa, el API Level 21 introdujo el concepto de "Perfiles de Trabajo", permitiendo aislar aplicaciones y datos corporativos de los personales con un distintivo visual. 
+                    El "Project Volta" trajo herramientas de depuración avanzadas para que los desarrolladores pudieran identificar exactamente qué parte de su código estaba drenando la batería.   
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Marshmallow" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 6.0 Marshmallow: Permisos y Ahorro de Energía (API 23)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_marshmallow.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzado en 2015, Marshmallow se enfocó en pulir la experiencia del usuario y otorgar más control sobre la privacidad. La innovación más visible fue el nuevo modelo de "Permisos en tiempo de 
+                    ejecución". En lugar de aceptar todos los permisos al instalar la app, los usuarios ahora conceden acceso (por ejemplo, a la cámara) solo en el momento en que la aplicación intenta usarla por 
+                    primera vez.   
+                    <br><br>
+                    Para combatir el drenaje de batería, se introdujo "Doze". Este sistema utiliza los sensores de movimiento para detectar si el teléfono está en reposo sobre una mesa y, tras un periodo de 
+                    inactividad, suspende la actividad de red y las tareas en segundo plano para extender la duración de la carga durante días. También se estandarizó el soporte para sensores de huellas dactilares 
+                    mediante una API oficial, permitiendo no solo desbloquear el teléfono sino también autorizar pagos y compras en la Play Store.   
+                    <br><br>
+                    Técnicamente, Marshmallow introdujo el soporte nativo para USB Tipo-C y la capacidad de formatear tarjetas SD como "almacenamiento adoptable", tratándolas como parte de la memoria interna del 
+                    sistema. Se corrigieron errores en la librería de renderizado de layouts utilizada por Android Studio para evitar cierres inesperados durante el diseño de interfaces.   
+                </p>
+            </div>
+        </article>
+
+        <article id="Nougat" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 7.0 y 7.1 Nougat: Multitarea y Gráficos Vulkan (API 24, 25)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_nougat.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Nougat trajo funciones de productividad largamente esperadas, como el modo nativo de pantalla dividida, permitiendo a los usuarios utilizar dos aplicaciones de manera simultánea en una sola 
+                    pantalla. Para los jugadores, la introducción de la API Vulkan supuso una mejora radical en el rendimiento gráfico, ofreciendo una interfaz de bajo nivel que reduce la carga del procesador y 
+                    permite un control más directo sobre la GPU. 
+                    <br><br>
+                    Un avance técnico invisible pero vital en el API Level 24 fue el compilador JIT con perfiles de código. Este sistema combina lo mejor de la compilación AOT de Lollipop con la rapidez de 
+                    instalación de las versiones antiguas. Las aplicaciones se instalan instantáneamente y, mientras el dispositivo se carga por la noche, el sistema compila las partes de la app que más se usan 
+                    para optimizarlas. 
+                    <br><br> 
+                    Nougat también introdujo "Direct Boot", que permite que aplicaciones críticas como alarmas o mensajes de emergencia funcionen incluso después de un reinicio antes de que el usuario desbloquee 
+                    el dispositivo con su contraseña. Se añadió el soporte para múltiples idiomas simultáneos, permitiendo que las búsquedas y aplicaciones se adapten a usuarios bilingües de forma fluida. 
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Oreo" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 8.0 y 8.1 Oreo: Project Treble y la Modularidad (API 26, 27)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_oreo.webp" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 8.0 "Oreo" fue una de las versiones más importantes a nivel de ingeniería. Introdujo "Project Treble", una reestructuración masiva del framework de Android que separó la implementación 
+                    del hardware (específica de cada fabricante de chips) de la base del sistema operativo. Esto permitió que las actualizaciones de seguridad y de sistema llegaran mucho más rápido a los usuarios, 
+                    ya que los fabricantes ya no tenían que esperar a que los proveedores de procesadores actualizaran sus drivers para cada nueva versión de Android.   
+                    <br><br>
+                    <strong>Innovaciones destacadas de Oreo:</strong>
+                    <ul>
+                        <li><strong>Picture-in-Picture (PiP): </strong>Permitía seguir viendo un video en una ventana flotante pequeña mientras se realizaban otras tareas.</li>
+                        <br><li><strong>Canales de Notificación: </strong>Otorgó a los usuarios el control para silenciar solo ciertos tipos de notificaciones de una aplicación (por ejemplo, silenciar promociones pero mantener alertas de mensajes).</li>
+                        <br><li><strong>Iconos Adaptativos: </strong>  Aseguró que los iconos de las aplicaciones tuvieran una forma consistente (círculo, cuadrado o ardilla) según el tema del dispositivo.</li>
+                        <br><li><strong>Autofill Framework:</strong> Permitió que gestores de contraseñas de terceros completaran credenciales de forma nativa en cualquier aplicación.</li>
+                    </ul> <br> 
+                    Oreo también impuso límites estrictos a la ejecución en segundo plano y al uso de la ubicación para evitar que aplicaciones mal optimizadas agotaran la batería del usuario. Se corrigió un error en el manejo de conexiones HTTPS 
+                    que realizaba caídas de protocolo inseguras en versiones anteriores de TLS.   
+                </p>
+            </div>
+        </article>
+
+
+        <article id="Pie" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 9 Pie: La Inteligencia Artificial al Servicio del Usuario (API 28)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_pie.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzada en 2018, Android 9 "Pie" integró el aprendizaje automático en el núcleo del sistema. Funciones como "Batería Inteligente" y "Brillo Inteligente" aprenden los patrones de uso del dueño del teléfono 
+                    para predecir qué aplicaciones se abrirán y ajustar la energía y la iluminación de forma proactiva.   
+                    <br><br>
+                    Pie introdujo un nuevo sistema de navegación basado en un único botón central (gestos) y soporte nativo para dispositivos con recortes de pantalla ("notches"). La seguridad fue un pilar fundamental: se restringió el acceso 
+                    al micrófono, cámara y sensores para todas las aplicaciones que estuvieran en segundo plano, protegiendo al usuario de espionaje.   
+                    <br><br>
+                    Técnicamente, el API Level 28 introdujo la API de Cámara Múltiple, permitiendo a los desarrolladores acceder a los datos de dos o más sensores físicos simultáneamente para crear efectos de desenfoque 
+                    o zoom óptico fluido. También se mejoró la precisión del GPS en interiores mediante el soporte para el protocolo Wi-Fi RTT (Round-Trip-Time).
+                    <br><br>
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Función de IA</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Adaptive Battery</td>
+                            <td>Prioriza la energía para las apps más utilizadas </td>
+                        </tr>
+                        <tr>
+                            <td>App Actions</td>
+                            <td>Predice la siguiente acción del usuario basándose en el contexto </td>
+                        </tr>
+                        <tr>
+                            <td>Slices</td>
+                            <td>Muestra partes de una app dentro de los resultados de búsqueda </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+
+
+        <article id="Android10" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 10: Privacidad, Gestos y Dispositivos Plegables (API 29)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_10.png" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 10 marcó el abandono de los nombres de postres comerciales y la introducción de un sistema de navegación por gestos refinado que eliminaba por completo la barra inferior. Se introdujo el 
+                    "Modo Oscuro" en todo el sistema, permitiendo ahorrar batería en pantallas OLED y reducir la fatiga visual.   
+                    <br><br>
+                    En el aspecto de privacidad, Android 10 implementó el "Scoped Storage", que limita el acceso de las aplicaciones a los archivos de otras, otorgándoles solo un espacio aislado de trabajo. 
+                    También se añadió el permiso de ubicación "Solo mientras la app está en uso", evitando que las aplicaciones rastreen al usuario en segundo plano sin su conocimiento.   
+                    <br><br>
+                    Técnicamente, el API Level 29 añadió soporte nativo para redes 5G y optimizó la interfaz para dispositivos plegables, gestionando de forma fluida el cambio de aplicaciones entre la pantalla 
+                    pequeña y la grande. Se incluyó TLS 1.3 por defecto, acelerando las conexiones seguras hasta en un 40%. Una revisión posterior (Revision 5, julio 2020) añadió stubs para Android Automotive OS, 
+                    expandiendo la plataforma a los vehículos.
+                </p>
+            </div>
+        </article>
+
+        <article id="Android11" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 11: Conversaciones y Control de Dispositivos (API 30)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_11.avif" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 11 se centró en facilitar la comunicación. Introdujo una sección dedicada a las conversaciones en el panel de notificaciones y las "Burbujas" (Bubbles), que permiten mantener chats 
+                    flotantes sobre cualquier aplicación. Se añadió un grabador de pantalla nativo y un nuevo menú de control de dispositivos inteligentes (Smart Home) accesible al mantener presionado el botón 
+                    de encendido.   
+                    <br><br>
+                    La privacidad se reforzó con permisos de un solo uso para la ubicación, cámara y micrófono. Si un usuario no utiliza una aplicación durante mucho tiempo, Android 11 restablece automáticamente 
+                    todos sus permisos para proteger los datos.   
+                    <br><br>
+                    Para los desarrolladores, el API Level 30 introdujo APIs para pantallas con bordes curvados ("Waterfall") y sensores de ángulo de bisagra para plegables, permitiendo animaciones fluidas según el 
+                    grado de apertura del dispositivo. También se mejoró la depuración inalámbrica mediante ADB, facilitando el desarrollo sin necesidad de cables físicos.   
+                </p>
+            </div>
+        </article>
+
+        <article id="Android12" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 12 y 12L: Material You y la Adaptabilidad (API 31, 32)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_12.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 12 presentó "Material You", un motor de personalización que extrae los colores del fondo de pantalla del usuario y los aplica a botones, widgets y menús de todo el 
+                    sistema. Se introdujo el "Privacy Dashboard", un panel que muestra exactamente qué aplicaciones accedieron a la ubicación o cámara y en qué momento.   
+                    <br><br>
+                    El API Level 31 añadió indicadores visuales (puntos verdes) en la barra de estado cuando el micrófono o la cámara están activos, y permitió a los usuarios proporcionar una 
+                    "ubicación aproximada" en lugar de la exacta a aplicaciones que no necesitan precisión GPS (como las de clima).   
+                    <br><br>
+                    Android 12L (API 32) fue una actualización centrada en tabletas y plegables. Introdujo una barra de tareas similar a la de una computadora para mejorar la multitarea y 
+                    un diseño de panel doble para las notificaciones y la pantalla de bloqueo, aprovechando mejor el espacio horizontal. Se corrigieron errores en el motor de renderizado que 
+                    causaban que los widgets de la pantalla de inicio fallaran al intentar cargar archivos de aplicaciones desactualizadas tras una actualización del sistema.   
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Android13" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 13: Personalización por Aplicación y Audio LE (API 33)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_13.webp" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 13 trajo la capacidad de configurar idiomas diferentes para cada aplicación, permitiendo que un usuario maneje su banca en español y sus redes sociales en inglés. 
+                    Se introdujo un nuevo selector de fotos más seguro, que permite a las aplicaciones acceder solo a las imágenes seleccionadas por el usuario en lugar de a toda su galería.   
+                    <br><br>
+                    <strong>Innovaciones técnicas del API Level 33: </strong><br>
+                    <ul>
+                        <li><strong>Bluetooth LE Audio: </strong>Implementación del códec LC3, que ofrece una calidad de sonido superior con un consumo de energía mucho menor y soporte para transmisión a múltiples auriculares.</li>
+                        <br><li><strong>Permiso de Notificaciones: </strong>Por primera vez, las aplicaciones deben pedir permiso explícito antes de poder enviar cualquier tipo de alerta.</li>
+                        <br><li><strong>MIDI 2.0: </strong>Soporte para el nuevo estándar MIDI mediante USB, permitiendo a músicos conectar instrumentos de alta resolución.</li>
+                        <br><li><strong>Mejoras en ART: </strong>El tiempo de ejecución se optimizó para que las aplicaciones se iniciaran aún más rápido y consumieran menos RAM.</li>
+                    </ul>       
+                    Se resolvieron errores de inestabilidad en Bluetooth causados por tipos de paquetes no implementados que provocaban cierres inesperados en la pila de red.   
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Android14" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 14: Eficiencia Energética y Ultra HDR (API 34)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_14.jpg" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 14 se enfocó en la personalización profunda y el rendimiento de la batería. Introdujo el soporte para imágenes "Ultra HDR", que mantienen un rango dinámico 
+                    completo en pantallas compatibles mientras se ven bien en pantallas antiguas. También se implementó el escalado de fuente no lineal hasta el 200%, asegurando que el 
+                    texto fuera legible para personas con visión reducida sin romper el diseño de las apps.   
+                    <br><br>
+                    Técnicamente, el API Level 34 restringió la capacidad de las aplicaciones para "matar" procesos de fondo de otras aplicaciones, una práctica común en apps de limpieza 
+                    falsas que en realidad empeoraba el rendimiento. Se introdujo la API "Health Connect", un repositorio centralizado y seguro para datos de salud y fitness que permite 
+                    compartir información entre apps de forma controlada.   
+                    <br><br>
+                    En cuanto a correcciones, se solucionaron problemas de reinicios inesperados relacionados con el procesamiento de estadísticas de red Wi-Fi y fugas de memoria en el 
+                    "Context Hub", un componente de bajo consumo para sensores.   
+                </p>
+            </div>
+        </article>
+
+
+
+        <article id="Android15" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 15: Espacio Privado y Páginas de 16 KB (API 35)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_15.webp" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Lanzada en 2024, Android 15 introdujo el "Espacio Privado", una zona del teléfono protegida por biometría adicional donde se pueden instalar aplicaciones 
+                    sensibles (como bancos o apps de salud) que desaparecen por completo de la lista de apps y las notificaciones cuando el espacio está bloqueado.   
+                    <br><br>
+                    Un cambio estructural mayor en el API Level 35 es el soporte experimental para páginas de memoria de 16 KB. Tradicionalmente, Android usaba páginas de 4 KB; 
+                    el salto a 16 KB permite que los procesadores modernos carguen aplicaciones más rápido y manejen tareas pesadas con mayor eficiencia energética. También se 
+                    añadió el soporte para conectividad satelital nativa, permitiendo enviar mensajes de emergencia sin cobertura celular.   
+                    <br><br>
+                    En el ámbito de la seguridad, Android 15 introdujo la "Detección de Grabación de Pantalla", permitiendo que las aplicaciones oculten contenido sensible 
+                    (como contraseñas) incluso si el usuario está compartiendo su pantalla. Se eliminó el soporte para instalar aplicaciones muy antiguas que apuntaran a 
+                    niveles de API inferiores al 24 (Nougat), dificultando que el malware evite los sistemas de seguridad modernos.   
+                </p>
+            </div>
+        </article>
+
+        <article id="Android16" class="info-card">
+            <header>
+                <span class="badge">Android</span>
+                <h1>Android 16: El Futuro Modular y Salud Integrada (API 36)</h1>
+            </header>
+            <div class="image-container">
+                <img src="img/android_info/Android_16.webp" alt="Imagen">
+            </div>
+            <div class="text-content">
+                <p>
+                    Android 16, conocido internamente como "Baklava", representa una transición hacia un modelo de desarrollo más rápido. Google ha anunciado lanzamientos de API más frecuentes 
+                    para llevar la innovación a los usuarios sin esperar un ciclo anual completo.   
+                    <br><br>
+                    <strong>Innovaciones y mejoras en Android 16: </strong><br>
+                    <ul>
+                        <li><strong>Notificaciones de Progreso: </strong>Un nuevo estilo de notificación que permite seguir el estado de un viaje en taxi o un pedido de comida de principio a fin de forma visual y centralizada.</li>   
+                        <br><li><strong>Registros Médicos FHIR: </strong>Permite que las aplicaciones de salud lean y escriban registros médicos en el formato estándar internacional FHIR con consentimiento explícito del usuario. </li>   
+                        <br><li><strong>Photo Picker Embebido: </strong>Los desarrolladores ahora pueden integrar el selector de fotos directamente en la interfaz de su aplicación para que se sienta parte de ella, manteniendo la seguridad del aislamiento de procesos. </li>  
+                        <br><li><strong>Media Quality Framework: </strong>Un conjunto de APIs estandarizadas para televisores que permite a las apps de streaming consultar perfiles de audio y video de alta calidad directamente del hardware.   </li>
+                    </ul><br>
+                    Android 16 incluye correcciones para problemas de calibración de retroalimentación háptica y drenaje excesivo de batería detectados durante las fases de prueba. También se ha optimizado el sistema de entrada de texto (IME) para evitar que el teclado desaparezca inesperadamente en aplicaciones con configuraciones de entrada específicas.   
+                </p>
+            </div>
+        </article>
+
+        </div>
+    <script>
+    // 1. Detectamos el ID desde el hash de la URL (ej: #android10)
+    const targetId = window.location.hash.substring(1); 
+
+    // 2. Referencia al elemento que queremos mostrar
+    const elementToShow = document.getElementById(targetId);
+
+    if (targetId && elementToShow) {
+        // --- PARTE NUEVA: ASIGNACIÓN DE DISEÑO POR ID ---
+        
+        // Definimos qué diseño corresponde a cada ID.
+        // Aquí puedes elegir tus 2 diseños favoritos de los 5 que tenías.
+         
+        if (targetId === "ios15" || targetId === "ios16" || targetId === "ios17" || targetId === "ios18" || targetId === "ios26") {
+            // Si es alguno de los iOS, usamos el estilo CLEAN (Apple)
+            document.body.classList.add('theme-clean');
+        } 
+        else {
+            // Diseño por defecto si el ID no coincide con los anteriores
+            document.body.classList.add('theme-cyber');
+        }
+
+        // 3. Mostramos la tarjeta correspondiente
+        elementToShow.classList.add('active');
+
+    } else {
+        // Manejo de errores si no hay ID o no existe
+        document.querySelector('.content-wrapper').innerHTML = 
+            "<h1 style='color:white; text-align:center;'>Error: Información no encontrada</h1>";
+        document.body.classList.add('theme-neon'); // Un fondo para el error
+    }
+    </script>
+
+</body>
+</html>
